@@ -21,4 +21,4 @@ def run_module(image):
         st.image(mathematical_morphology.opening(image, k), channels="BGR")
 
     else:
-        st.info("Select operation")
+        st.info("Select Morphology operation")

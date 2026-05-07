@@ -7,7 +7,6 @@ def run_module(image):
         "Point Operation",
         ["None", "Addition", "Subtraction", "Division", "Complement"]
     )
-    st.info("Select operation")
 
     if operation == "Addition":
         value = st.slider("Value", 0, 100, 10)
@@ -23,3 +22,5 @@ def run_module(image):
 
     elif operation == "Complement":
         st.image(point_ops.complement(image), channels="BGR")
+    else:
+         st.info("Select operation")    

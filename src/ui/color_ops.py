@@ -7,7 +7,6 @@ def run_module(image):
     operation = st.selectbox(
         "Color Operations",["None","Change Red","Swap Channels","Remove Channel"])
 
-    st.info("Select an operation")
     if operation == "Change Red":
         value = st.slider("Red Intensity", 0, 100, 20)
         result = color_ops.change_red(image, value)
@@ -22,3 +21,5 @@ def run_module(image):
         channel = st.selectbox("Select Channel", ["Red", "Green", "Blue"])
         result = color_ops.remove_channel(image, channel)
         st.image(result, channels="BGR")
+    else:
+        st.info("Select Color operation")    

@@ -7,7 +7,7 @@ def run_module(image):
         "Histogram Operation",
         ["None", "Histogram Stretching", "Histogram Equalization"]
     )
-    st.info("Select histogram operation")
+   
 
     if operation == "Histogram Stretching":
         result = histogram.histogram_stretching(image)
@@ -17,3 +17,5 @@ def run_module(image):
     elif operation == "Histogram Equalization":
         result = histogram.histogram_equalization(image)
         st.image(result, channels="GRAY")
+    else:
+         st.info("Select histogram operation")   
