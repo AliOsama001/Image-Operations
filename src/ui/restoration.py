@@ -1,10 +1,7 @@
 import streamlit as st
-import numpy as np
-import cv2
-from src.core import image_restoration 
+from src.core import image_restoration
 
 def run_module(image):
-
     operation = st.selectbox(
         "Restoration / Boundary",
         [

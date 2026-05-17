@@ -2,7 +2,11 @@ import streamlit as st
 import cv2
 import numpy as np
 from streamlit_option_menu import option_menu
-from src.ui import point_ops, color_ops, edge_detection, histogram, neighborhood_processing, mathematical_morphology, restoration, segmentation
+from src.ui import (
+    point_ops, color_ops, edge_detection,
+    histogram, neighborhood_processing,
+    mathematical_morphology, restoration, segmentation
+)
 
 st.set_page_config(page_title="Digital Image Processing System", layout="wide")
 

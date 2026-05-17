@@ -1,9 +1,7 @@
 import streamlit as st
-import cv2
 from src.core import histogram
 
 def run_module(image):
-
     operation = st.selectbox(
         "Histogram Operation",
         ["None", "Histogram Stretching", "Histogram Equalization"]

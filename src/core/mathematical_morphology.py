@@ -1,7 +1,5 @@
-import streamlit as st
 import numpy as np
 import cv2
-
 
 def dilation(image, k):
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))

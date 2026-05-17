@@ -1,13 +1,5 @@
 import streamlit as st
-import numpy as np
-import cv2
-from src.core.segmentation import (
-    outlier_removal,
-    gaussian_smoothing,
-    global_threshold,
-    automatic_threshold,
-    adaptive_threshold
-)
+from src.core.segmentation import *
 
 def run_module(image):
     operation = st.selectbox(

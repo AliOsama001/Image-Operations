@@ -1,5 +1,5 @@
-import numpy as np
 import cv2
+import numpy as np
 
 def addition(image, value):
     return cv2.add(image, np.uint8([value]))

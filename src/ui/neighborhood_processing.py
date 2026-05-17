@@ -1,13 +1,9 @@
 import streamlit as st
-import numpy as np
-import cv2
 from src.core import neighborhood_processing
 
 def run_module(image):
-
     operation = st.selectbox("Choose Filter Type",["None","Average Filter","Laplacian Filter","Median Filter","Max Filter","Min Filter"])
     ksize = st.slider("Kernel Size", 3, 11, 3, step=2)
-
 
     if operation == "Average Filter":
         result = neighborhood_processing.average_filter(image, ksize)

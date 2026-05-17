@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 
 def change_red(image, value):
     img_copy = image.copy()

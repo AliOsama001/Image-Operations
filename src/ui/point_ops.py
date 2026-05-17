@@ -1,8 +1,7 @@
 import streamlit as st
-from src.core import point_ops 
+from src.core import point_ops
 
 def run_module(image):
-
     operation = st.selectbox(
         "Point Operation",
         ["None", "Addition", "Subtraction", "Division", "Complement"]
@@ -23,4 +22,4 @@ def run_module(image):
     elif operation == "Complement":
         st.image(point_ops.complement(image), channels="BGR")
     else:
-         st.info("Select operation")    
+        st.info("Select operation")

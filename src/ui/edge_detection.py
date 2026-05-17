@@ -1,9 +1,7 @@
-import cv2
-import numpy as np
 import streamlit as st
 from src.core import edge_detection
-def run_module(image):
 
+def run_module(image):
     operation = st.selectbox("Edge Detection",["None", "Sobel"])
 
     if operation == "Sobel":

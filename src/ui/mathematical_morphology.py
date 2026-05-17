@@ -1,9 +1,7 @@
-import numpy as np
-import cv2
 import streamlit as st
 from src.core import mathematical_morphology
-def run_module(image):
 
+def run_module(image):
     operation = st.selectbox(
         "Morphology Operations",
         ["None", "Dilation", "Erosion", "Opening"]
