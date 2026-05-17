@@ -33,7 +33,7 @@ else:
         st.write("")
         st.write("")
         
-        _, center_col, _ = st.columns([1, 2, 1])
+        col1, center_col, col3 = st.columns([1, 2, 1])
         
         with center_col:
             with st.container(border=True):
@@ -42,7 +42,7 @@ else:
                 
                 st.divider()
                 
-                st.subheader(" Quick Steps to Start:")
+                st.subheader("💡 Quick Steps to Start:")
                 st.markdown("- Go back to the **🏠 Home** tab from the sidebar.")
                 st.markdown("- Upload your image file (**PNG**, **JPG**, or **JPEG**).")
                 st.markdown("- Return here to start applying digital image processing filters.")
@@ -58,7 +58,7 @@ else:
         
         with col_input:
             st.subheader("Original Image")
-            st.image(image, channels="BGR", use_container_width=True)
+            st.image(image, channels="BGR", width="stretch")
             
         with col_output:
             st.subheader("Processing Panel")
