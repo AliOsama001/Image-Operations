@@ -7,23 +7,52 @@ def run_module(image):
 
     if operation == "Average Filter":
         result = neighborhood_processing.average_filter(image, ksize)
-        st.image(result, channels="BGR")
+        col_input, col_output = st.columns(2)
+        with col_input:
+            st.subheader("Original Image")
+            st.image(image, channels="BGR", width="stretch")
+        with col_output:
+            st.subheader("Output Image")
+            st.image(result, channels="BGR")
 
     elif operation == "Laplacian Filter":
-        result = neighborhood_processing.  laplacian_filter(image)
-        st.image(result, channels="GRAY")
+        result = neighborhood_processing.laplacian_filter(image)
+        col_input, col_output = st.columns(2)
+        with col_input:
+            st.subheader("Original Image")
+            st.image(image, channels="BGR", width="stretch")
+        with col_output:
+            st.subheader("Output Image")
+            st.image(result, channels="GRAY")
 
     elif operation == "Median Filter":
         result = neighborhood_processing.median_filter(image, ksize)
-        st.image(result, channels="BGR")
+        col_input, col_output = st.columns(2)
+        with col_input:
+            st.subheader("Original Image")
+            st.image(image, channels="BGR", width="stretch")
+        with col_output:
+            st.subheader("Output Image")
+            st.image(result, channels="BGR")
 
     elif operation == "Max Filter":
         result = neighborhood_processing.max_filter(image, ksize)
-        st.image(result, channels="BGR")
+        col_input, col_output = st.columns(2)
+        with col_input:
+            st.subheader("Original Image")
+            st.image(image, channels="BGR", width="stretch")
+        with col_output:
+            st.subheader("Output Image")
+            st.image(result, channels="BGR")
 
     elif operation == "Min Filter":
         result = neighborhood_processing.min_filter(image, ksize)
-        st.image(result, channels="BGR")
+        col_input, col_output = st.columns(2)
+        with col_input:
+            st.subheader("Original Image")
+            st.image(image, channels="BGR", width="stretch")
+        with col_output:
+            st.subheader("Output Image")
+            st.image(result, channels="BGR")
     else:
         st.info("Select operation")
-        

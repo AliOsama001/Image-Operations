@@ -58,27 +58,27 @@ else:
         st.title(f"{selected}")
         image = st.session_state['main_image']
         
-        col_input, col_output = st.columns(2)
+        # col_input, col_output = st.columns(2)
         
-        with col_input:
-            st.subheader("Original Image")
-            st.image(image, channels="BGR", width="stretch")
+        # with col_input:
+        #     st.subheader("Original Image")
+        #     st.image(image, channels="BGR", width="stretch")
             
-        with col_output:
-            st.subheader("Processing Panel")
-            if selected == "Point Operations":
-                point_ops.run_module(image)
-            elif selected == "Color Operations":
-                color_ops.run_module(image)
-            elif selected == "Edge Detection":
-                edge_detection.run_module(image)
-            elif selected == "Histogram":
-                histogram.run_module(image)
-            elif selected == "Neighborhood Processing":
-                neighborhood_processing.run_module(image)
-            elif selected == "Mathematical Morphology":
-                mathematical_morphology.run_module(image)
-            elif selected == "Restoration":
-                restoration.run_module(image)
-            elif selected == "Segmentation":
-                segmentation.run_module(image)
+        # with col_output:
+        st.subheader("Processing Panel")
+        if selected == "Point Operations":
+            point_ops.run_module(image)
+        elif selected == "Color Operations":
+            color_ops.run_module(image)
+        elif selected == "Edge Detection":
+            edge_detection.run_module(image)
+        elif selected == "Histogram":
+            histogram.run_module(image)
+        elif selected == "Neighborhood Processing":
+            neighborhood_processing.run_module(image)
+        elif selected == "Mathematical Morphology":
+            mathematical_morphology.run_module(image)
+        elif selected == "Restoration":
+            restoration.run_module(image)
+        elif selected == "Segmentation":
+            segmentation.run_module(image)
