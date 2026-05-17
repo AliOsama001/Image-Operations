@@ -4,12 +4,13 @@ import cv2
 
 
 def dilation(image, k):
-    pass 
-
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))
+    return cv2.dilate(image, kernel)
 
 def erosion(image, k):
-    pass 
-
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))
+    return cv2.erode(image, kernel)
 
 def opening(image, k):
-    pass
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))
+    return cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)

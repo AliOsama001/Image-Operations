@@ -1,31 +1,48 @@
 import streamlit as st
 import numpy as np
 import cv2
-from src.core import segmentation
+from src.core.segmentation import (
+    outlier_removal,
+    gaussian_smoothing,
+    global_threshold,
+    automatic_threshold,
+    adaptive_threshold
+)
+
 def run_module(image):
+    operation = st.selectbox(
+        "Choose Operation",
+        [
+            "None",
+            "Outlier Removal",
+            "Gaussian Smoothing",
+            "Global Thresholding",
+            "Automatic Thresholding",
+            "Adaptive Thresholding"
+        ]
+    )
 
-    operation = st.selectbox("Choose Filter Type",["None","Average Filter","Laplacian Filter","Median Filter","Max Filter","Min Filter"])
-    ksize = st.slider("Kernel Size", 3, 11, 3, step=2)
-
-    if operation == "Average Filter":
-        result = segmentation.average_filter(image, ksize)
+    if operation == "Outlier Removal":
+        result = outlier_removal(image)
         st.image(result, channels="BGR")
 
-    elif operation == "Laplacian Filter":
-        result = segmentation.laplacian_filter(image)
-        st.image(result, channels="GRAY")
-
-    elif operation == "Median Filter":
-        result =segmentation.median_filter(image, ksize)
+    elif operation == "Gaussian Smoothing":
+        ksize = st.slider("Kernel Size", 3, 21, 5, step=2)
+        result = gaussian_smoothing(image, ksize)
         st.image(result, channels="BGR")
 
-    elif operation == "Max Filter":
-        result = segmentation.max_filter(image, ksize)
-        st.image(result, channels="BGR")
+    elif operation == "Global Thresholding":
+        thresh_val = st.slider("Threshold Value", 0, 255, 127)
+        result = global_threshold(image, thresh_val)
+        st.image(result)
 
-    elif operation == "Min Filter":
-        result = segmentation.min_filter(image, ksize)
-        st.image(result, channels="BGR")
+    elif operation == "Automatic Thresholding":
+        result = automatic_threshold(image)
+        st.image(result)
+
+    elif operation == "Adaptive Thresholding":
+        result = adaptive_threshold(image)
+        st.image(result)
 
     else:
-        st.info("Select a filter")
+        st.info("Select an operation")
