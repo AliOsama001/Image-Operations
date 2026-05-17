@@ -1,4 +1,3 @@
-
 import streamlit as st
 import cv2
 import numpy as np
@@ -31,7 +30,26 @@ if selected == "Home":
 
 else:
     if 'main_image' not in st.session_state:
-        st.error("Please go back to 'Home' and upload an image first.")
+        st.write("")
+        st.write("")
+        
+        _, center_col, _ = st.columns([1, 2, 1])
+        
+        with center_col:
+            with st.container(border=True):
+                st.header("📸 No Image Detected")
+                st.write("You cannot access the processing tools without providing a source image first.")
+                
+                st.divider()
+                
+                st.subheader(" Quick Steps to Start:")
+                st.markdown("- Go back to the **🏠 Home** tab from the sidebar.")
+                st.markdown("- Upload your image file (**PNG**, **JPG**, or **JPEG**).")
+                st.markdown("- Return here to start applying digital image processing filters.")
+                
+                st.divider()
+                
+                st.info("System is ready and waiting for your file upload.")
     else:
         st.title(f"{selected}")
         image = st.session_state['main_image']
