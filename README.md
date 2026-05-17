@@ -108,16 +108,10 @@ For a complete list, see `requirements.txt`
 
 ## How to Run
 
-### Option 1: Direct Streamlit Run
+### Direct Streamlit Run
 
 ```bash
 streamlit run run.py
-```
-
-### Option 2: Using Python
-
-```bash
-python run.py
 ```
 
 ## Module Guide
@@ -154,16 +148,11 @@ See `requirements.txt` for all Python package dependencies. The project primaril
 - OpenCV (cv2)
 - NumPy
 - Streamlit
-- Pillow
-
-## License
-
-[Add your license information here]
 
 ## Author
 
-[Add your name/contact information here]
+AbdElrahman Maher
 
 ## Support
 
-For issues or questions, please [add your support contact method]
+For issues or questions, please 01013270651

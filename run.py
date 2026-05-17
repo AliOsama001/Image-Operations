@@ -10,6 +10,39 @@ from src.ui import (
 
 st.set_page_config(page_title="Digital Image Processing System", layout="wide")
 
+def no_image():
+    st.write("")
+    st.write("")
+
+    col1, center_col, col3 = st.columns([1, 2, 1])
+
+    with center_col:
+        with st.container(border=True):
+            st.header("📸 No Image Detected")
+            st.write("You cannot access the processing tools without providing a source image first.")
+            
+            st.divider()
+            
+            st.subheader("💡 Quick Steps to Start:")
+            st.markdown("- Go back to the **🏠 Home** tab from the sidebar.")
+            st.markdown("- Upload your image file (**PNG**, **JPG**, or **JPEG**).")
+            st.markdown("- Return here to start applying digital image processing filters.")
+            
+            st.divider()
+            
+            st.info("System is ready and waiting for your file upload.")
+
+def show_images(new_img, channels):
+    col_input, col_output = st.columns(2)
+    with col_input:
+        st.subheader("Original Image")
+        st.image(image, channels="BGR", width="stretch")
+        
+    with col_output:
+        st.subheader("Output Image")
+        st.image(new_img, channels=channels)
+
+
 with st.sidebar:
     st.title("DIP Control Center")
     selected = option_menu(
@@ -34,37 +67,12 @@ if selected == "Home":
 
 else:
     if 'main_image' not in st.session_state:
-        st.write("")
-        st.write("")
-        
-        col1, center_col, col3 = st.columns([1, 2, 1])
-        
-        with center_col:
-            with st.container(border=True):
-                st.header("📸 No Image Detected")
-                st.write("You cannot access the processing tools without providing a source image first.")
-                
-                st.divider()
-                
-                st.subheader("💡 Quick Steps to Start:")
-                st.markdown("- Go back to the **🏠 Home** tab from the sidebar.")
-                st.markdown("- Upload your image file (**PNG**, **JPG**, or **JPEG**).")
-                st.markdown("- Return here to start applying digital image processing filters.")
-                
-                st.divider()
-                
-                st.info("System is ready and waiting for your file upload.")
+        no_image()
+    
     else:
         st.title(f"{selected}")
         image = st.session_state['main_image']
         
-        # col_input, col_output = st.columns(2)
-        
-        # with col_input:
-        #     st.subheader("Original Image")
-        #     st.image(image, channels="BGR", width="stretch")
-            
-        # with col_output:
         st.subheader("Processing Panel")
         if selected == "Point Operations":
             point_ops.run_module(image)

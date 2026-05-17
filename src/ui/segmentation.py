@@ -1,5 +1,6 @@
 import streamlit as st
-from src.core.segmentation import *
+from src.core import segmentation
+from src.utils import show_images
 
 def run_module(image):
     operation = st.selectbox(
@@ -15,61 +16,26 @@ def run_module(image):
     )
 
     if operation == "Outlier Removal":
-        result = outlier_removal(image)
-        
-        col_input, col_output = st.columns(2)
-        with col_input:
-            st.subheader("Original Image")
-            st.image(image, channels="BGR", width="stretch")
-        with col_output:
-            st.subheader("Output Image")
-            st.image(result, channels="BGR")
+        result = segmentation.outlier_removal(image)
+        show_images(image, result, "BGR")
 
     elif operation == "Gaussian Smoothing":
         ksize = st.slider("Kernel Size", 3, 21, 5, step=2)
-        result = gaussian_smoothing(image, ksize)
-        
-        col_input, col_output = st.columns(2)
-        with col_input:
-            st.subheader("Original Image")
-            st.image(image, channels="BGR", width="stretch")
-        with col_output:
-            st.subheader("Output Image")
-            st.image(result, channels="BGR")
+        result = segmentation.gaussian_smoothing(image, ksize)
+        show_images(image, result, "BGR")
 
     elif operation == "Global Thresholding":
         thresh_val = st.slider("Threshold Value", 0, 255, 127)
-        result = global_threshold(image, thresh_val)
-        
-        col_input, col_output = st.columns(2)
-        with col_input:
-            st.subheader("Original Image")
-            st.image(image, channels="BGR", width="stretch")
-        with col_output:
-            st.subheader("Output Image")
-            st.image(result)
+        result = segmentation.global_threshold(image, thresh_val)
+        show_images(image, result)
 
     elif operation == "Automatic Thresholding":
-        result = automatic_threshold(image)
-        
-        col_input, col_output = st.columns(2)
-        with col_input:
-            st.subheader("Original Image")
-            st.image(image, channels="BGR", width="stretch")
-        with col_output:
-            st.subheader("Output Image")
-            st.image(result)
+        result = segmentation.automatic_threshold(image)
+        show_images(image, result)
 
     elif operation == "Adaptive Thresholding":
-        result = adaptive_threshold(image)
-        
-        col_input, col_output = st.columns(2)
-        with col_input:
-            st.subheader("Original Image")
-            st.image(image, channels="BGR", width="stretch")
-        with col_output:
-            st.subheader("Output Image")
-            st.image(result)
+        result = segmentation.adaptive_threshold(image)
+        show_images(image, result)
 
     else:
         st.info("Select an operation")
