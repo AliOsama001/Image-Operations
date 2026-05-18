@@ -2,16 +2,26 @@ import numpy as np
 import cv2
 
 
-def internal_boundary(image, k):
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))
-    eroded = cv2.erode(image, kernel)
-    return cv2.subtract(image, eroded)
+def average_filter(image, ksize):
+    return cv2.blur(image, (ksize, ksize))
 
-def external_boundary(image, k):
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))
-    dilated = cv2.dilate(image, kernel)
-    return cv2.subtract(dilated, image)
+def median_filter(image, ksize):
+    return cv2.medianBlur(image, ksize)
 
-def morphological_gradient(image, k):
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (k, k))
-    return cv2.morphologyEx(image, cv2.MORPH_GRADIENT, kernel)
+def outlier_method(image, threshold=30):
+    if len(image.shape) == 3:
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        gray = image.copy()
+        
+    blur_img = cv2.blur(gray, (3, 3))
+    diff = cv2.absdiff(gray, blur_img)
+    result = np.where(diff > threshold, blur_img, gray)
+    return result
+
+def image_averaging(image_list):
+    return np.mean(image_list, axis=0).astype(np.uint8)
+
+def laplacian_filter(image):
+    laplacian = cv2.Laplacian(image, cv2.CV_64F)
+    return np.uint8(np.absolute(laplacian))
